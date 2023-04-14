@@ -3,6 +3,14 @@ $color-bg: #f5f4f5;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap");
 
+$mobile-screen: "(max-width:800px)";
+
+@mixin mobile {
+  @media #{$mobile-screen} {
+    @content;
+  }
+}
+
 body {
   background-color: $color-bg;
   margin: 0;
@@ -16,6 +24,9 @@ body {
 .main-screen-wrapper {
 }
 .control-dots {
+  @include mobile {
+    display: none;
+  }
   .dot {
     box-shadow: none !important;
     background:#868686 !important;
