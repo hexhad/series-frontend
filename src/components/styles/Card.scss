@@ -1,10 +1,18 @@
-$color-one: #232c3d;
+$color-blue: #232c3d;
 $color-one: #fff9f3;
-$color-one: #e52e2a;
+$color-red: #e52e2a;
 $color-bg: #f5f4f5;
 $color: #fff;
-$color-green:#00935d;
+$color-green: #00935d;
 $color-white: #fff;
+
+$mobile-screen: "(max-width:800px)";
+
+@mixin mobile {
+  @media #{$mobile-screen} {
+    @content;
+  }
+}
 
 .card {
   width: 100vw;
@@ -15,14 +23,20 @@ $color-white: #fff;
   .card-container {
     background-color: $color;
     width: 50vw;
+    @include mobile {
+      width: 80vw !important;
+    }
     height: 50vh;
     border-radius: 5px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 20vw 30vw;     
-    .runnning{
-        background-color: $color-green !important;
-      }
+    grid-template-columns: 20vw 30vw;
+    @include mobile {
+      grid-template-columns: 20vw 60vw;
+    }
+    .runnning {
+      background-color: $color-green !important;
+    }
     .card-tag {
       position: absolute;
       background-color: #e52e2a;
@@ -45,17 +59,23 @@ $color-white: #fff;
         height: 50vh;
         min-height: fit-content;
         object-fit: cover;
-        // max-width: 10px;
-        // height: 10px;
-        // width: 10px;
       }
     }
     .card-data-wrapper {
-      // background-color: #e52e2a;
       grid-column: 2;
+      padding: 10px 10px 10px 20px;
+      text-align: left;
       .card-name {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 10px 0;
+      }
+      .card-genres {
+        font-size: 11px;
+        margin: 5px 0;
       }
       .card-rating {
+        margin: 0;
       }
       .card-status {
       }
@@ -68,7 +88,48 @@ $color-white: #fff;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+      .card-episodes {
+        margin: 3px 0;
+        font-size: 10px;
+      }
       .card-network {
+      }
+      .sub-image-set {
+        display: flex;
+        flex-direction: row;
+        img {
+          border-radius: 3px;
+          height: 100px;
+          width: 100px;
+          object-fit: cover;
+          margin-left: 5px;
+        }
+        img:first-child {
+          margin-left: 0;
+        }
+        .have-more {
+          height: 100px;
+          width: 100px;
+        }
+      }
+      .card-bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 10px;
+        .red-fancy {
+          height: 10px;
+          width: 10px;
+          background-color: $color-red;
+          border-radius: 100%;
+        }
+        .blue-fancy {
+          height: 10px;
+          width: 10px;
+          margin-left: 5px;
+          border-radius: 100%;
+          background-color: $color-blue;
+        }
       }
     }
   }

@@ -37,6 +37,9 @@ export default function MainScreen() {
     showArrows={false}
     autoPlay
     infiniteLoop
+    stopOnHover
+    swipeable
+    showThumbs
       >{!!seriesSet?.length && renderList}</Carousel>
     </div>
   );

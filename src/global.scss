@@ -1,15 +1,26 @@
 $primary-color: #000;
 $color-bg: #f5f4f5;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap");
 
 body {
   background-color: $color-bg;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {}
-.main-screen-wrapper {}
+.App {
+}
+.main-screen-wrapper {
+}
+.control-dots {
+  .dot {
+    box-shadow: none !important;
+    background:#868686 !important;
+  }
+  .selected {
+    background: #232c3d !important;
+  }
+}
