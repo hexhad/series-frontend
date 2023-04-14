@@ -1,0 +1,15 @@
+$primary-color: #000;
+$color-bg: #f5f4f5;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap');
+
+body {
+  background-color: $color-bg;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {}
+.main-screen-wrapper {}

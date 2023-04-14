@@ -1,0 +1,75 @@
+$color-one: #232c3d;
+$color-one: #fff9f3;
+$color-one: #e52e2a;
+$color-bg: #f5f4f5;
+$color: #fff;
+$color-green:#00935d;
+$color-white: #fff;
+
+.card {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .card-container {
+    background-color: $color;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 5px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 20vw 30vw;     
+    .runnning{
+        background-color: $color-green !important;
+      }
+    .card-tag {
+      position: absolute;
+      background-color: #e52e2a;
+
+      margin-top: 10px;
+      margin-left: -10px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      filter: drop-shadow(0px 0px 5px #00000041);
+      p {
+        margin: 0;
+        color: $color-white;
+      }
+    }
+
+    .card-image-wrapper {
+      grid-column: 1;
+      height: 50vh;
+      .card-image {
+        height: 50vh;
+        min-height: fit-content;
+        object-fit: cover;
+        // max-width: 10px;
+        // height: 10px;
+        // width: 10px;
+      }
+    }
+    .card-data-wrapper {
+      // background-color: #e52e2a;
+      grid-column: 2;
+      .card-name {
+      }
+      .card-rating {
+      }
+      .card-status {
+      }
+      .card-desc {
+        max-height: calc(3 * 1.5 * 14px);
+        font-size: 14px;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .card-network {
+      }
+    }
+  }
+}
