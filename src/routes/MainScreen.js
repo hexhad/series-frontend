@@ -1,46 +1,43 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { db } from "../plugins/firebase.js";
-import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useMemo } from "react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
 import Card from "../components/Card.js";
 import "../global.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getSeries } from "../redux/ducks/seriesSlice.js";
 
 export default function MainScreen() {
-  const [seriesSet, setSeriesSet] = useState();
+  const dispatch = useDispatch();
 
-  async function call() {
-    const seriesCollection = collection(db, "series");
-    const data = await getDocs(seriesCollection);
-    let struct = data.docs.map((d) => ({ ...d.data(), id_fire: d.id }));
-    setSeriesSet(struct);
-  }
+  const seriesData = useSelector((state) => state.series);
 
   useEffect(() => {
-    call();
-  }, []);
+    dispatch(getSeries());
+  }, [dispatch]);
 
   const renderList = useMemo(() => {
     return (
-      !!seriesSet?.length &&
-      Object?.values(seriesSet).map((data) => <Card {...data} />)
+      !!seriesData?.length &&
+      Object?.values(seriesData).map((data,index) => <Card {...data} key={index}/>)
     );
-  }, [seriesSet]);
+  }, [seriesData]);
 
   return (
     <div className="main-screen-wrapper">
-      <Carousel 
-    //   centerMode
-    showStatus={false}
-    showArrows={false}
-    autoPlay
-    infiniteLoop
-    stopOnHover
-    swipeable
-    showThumbs
-      >{!!seriesSet?.length && renderList}</Carousel>
+      <Carousel
+        //   centerMode
+        showStatus={false}
+        showArrows={false}
+        autoPlay
+        infiniteLoop
+        stopOnHover
+        swipeable
+        showThumbs={false}
+      >
+        {!!seriesData?.length && renderList}
+      </Carousel>
     </div>
   );
 }
