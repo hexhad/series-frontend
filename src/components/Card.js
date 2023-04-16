@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles/Card.scss";
+import useWindowDimensions from "../hooks/useWindowDimentions";
 
-export default function Card(data) {
-
+export function Card(data) {
   const {
-    id,
+    // id,
     name,
     network,
     image_thumbnail_path,
@@ -29,7 +29,17 @@ export default function Card(data) {
           <p>{status}</p>
         </div>
         <div className="card-image-wrapper">
-          <img src={image_thumbnail_path} alt={name} className="card-image" />
+          {image_thumbnail_path.length > 28 ? (
+            <img src={image_thumbnail_path} alt={name} className="card-image" />
+          ) : (
+            <div className="placeholder-wrapper">
+              <img
+                alt="placeholder"
+                src="https://hexhad.github.io/src/itsmine.png"
+                className="img-placeholder"
+              />
+            </div>
+          )}
         </div>
         <div className="card-data-wrapper">
           <p className="card-name">{name}</p>
@@ -42,7 +52,10 @@ export default function Card(data) {
           <p className="card-episodes">{`Episodes : ${episodes.length}`}</p>
           <p className="card-network">{network}</p>
           <div className="sub-image-set">
-            {pictures?.map((img, index) => index < 4 && <img src={img} alt={index}  key={index}/>)}
+            {pictures?.map(
+              (img, index) =>
+                index < 4 && <img src={img} alt={index} key={index} />
+            )}
           </div>
           {/* <div className="card-bottom">
             <div className="red-fancy"></div>
@@ -50,6 +63,43 @@ export default function Card(data) {
           </div> */}
         </div>
       </div>
+    </div>
+  );
+}
+
+export function SquareCard(data) {
+  const {
+    name,
+    image_thumbnail_path,
+  } = data;
+
+  const { width } = useWindowDimensions();
+
+  console.log(width);
+  
+  return (
+    <div className="square">
+      
+
+
+{image_thumbnail_path.length > 28 ? (
+            <img
+            src={image_thumbnail_path}
+            alt={name}
+            className="square-image"
+          />
+          ) : (
+            <div className="placeholder-wrapper">
+              <img
+                alt="placeholder"
+                src="https://hexhad.github.io/src/itsmine.png"
+                className="img-placeholder"
+              />
+            </div>
+          )}
+
+
+      <p className="square-title">{name}</p>
     </div>
   );
 }

@@ -60,6 +60,18 @@ $mobile-screen: "(max-width:800px)";
         min-height: fit-content;
         object-fit: cover;
       }
+      .placeholder-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-blue;
+        height: 100%;
+        width: 100%;
+        .img-placeholder {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
     }
     .card-data-wrapper {
       grid-column: 2;
@@ -132,5 +144,40 @@ $mobile-screen: "(max-width:800px)";
         }
       }
     }
+  }
+}
+
+.square {
+  width: 13vw;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px;
+  .square-image {
+    border-radius: 100%;
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+  }
+  .placeholder-wrapper {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-blue;
+    .img-placeholder {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .square-title {
+    font-size: 10px;
+    text-align: center;
   }
 }
