@@ -13,7 +13,7 @@ export default function MainScreen() {
 
   const seriesData = useSelector((state) => state.series);
 
-  const [mode, setMode] = useState(true);
+  const [mode, setMode] = useState(false);
 
   useEffect(() => {
     dispatch(getSeries());
