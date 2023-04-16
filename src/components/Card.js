@@ -21,7 +21,6 @@ export default function Card(data) {
     type: "conjunction",
   });
 
-  console.log(data);
   return (
     <div key={id} className="card">
       <div className="card-container">
@@ -42,7 +41,7 @@ export default function Card(data) {
           <p className="card-episodes">{`Episodes : ${episodes.length}`}</p>
           <p className="card-network">{network}</p>
           <div className="sub-image-set">
-            {pictures?.map((img, index) => index < 4 && <img src={img} />)}
+            {pictures?.map((img, index) => index < 4 && <img src={img} alt={index}/>)}
           </div>
           {/* <div className="card-bottom">
             <div className="red-fancy"></div>

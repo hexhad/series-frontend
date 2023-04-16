@@ -1,10 +1,23 @@
-import { combineReducers, createStore } from "redux";
-import seriesReducer from "./ducks";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import seriesReducer from "./ducks/seriesSlice";
+import {watcherSaga} from "./sagas/rootSaga";
 
-const rootReducer = combineReducers({
+const reducer = combineReducers({
   series: seriesReducer,
 });
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer,
+  middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware],
+});
+
+sagaMiddleware.run(watcherSaga);
 
 export default store;
