@@ -1,0 +1,18 @@
+$mobile-screen: "(max-width:800px)";
+
+@mixin mobile {
+  @media #{$mobile-screen} {
+    @content;
+  }
+}
+
+.series-scroller {
+  height: 60vh;
+  width: 60vw;
+  @include mobile {
+    height: 60vh;
+    width: 80vw;
+  }
+//   overflow-y: scroll;
+  z-index: 99999;
+}

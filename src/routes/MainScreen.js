@@ -6,18 +6,30 @@ import { Carousel } from "react-responsive-carousel";
 import { Card, SquareCard } from "../components/Card.js";
 import "../global.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getSeries } from "../redux/ducks/seriesSlice.js";
+import { getSeries, setSelectedSeries } from "../redux/ducks/seriesSlice.js";
+import EpisodePreview from "../utils/EpisodePreview.js";
+
+// Catherine Haena Kim
 
 export default function MainScreen() {
   const dispatch = useDispatch();
 
-  const seriesData = useSelector((state) => state.series);
+  const { seriesList, selectedSeries } = useSelector((state) => state.series);
 
   const [mode, setMode] = useState(false);
+  const [stopCarousel, setStopCarousel] = useState(false);
 
   useEffect(() => {
     dispatch(getSeries());
   }, [dispatch]);
+
+  useEffect(() => {
+    setStopCarousel(!!selectedSeries?.view);
+  }, [selectedSeries]);
+
+  function setViewCard(episodes) {
+    dispatch(setSelectedSeries({ episodes, view: true }));
+  }
 
   const renderSlider = useMemo(() => {
     return (
@@ -25,40 +37,43 @@ export default function MainScreen() {
         //   centerMode
         showStatus={false}
         showArrows={false}
-        autoPlay
+        autoPlay={!stopCarousel}
         infiniteLoop
         stopOnHover
         swipeable
         showThumbs={false}
       >
-        {!!seriesData?.length &&
-          Object?.values(seriesData).map((data, index) => (
-            <Card {...data} key={index} />
+        {!!seriesList?.length &&
+          Object?.values(seriesList).map((data, index) => (
+            <Card {...data} key={index} onPress={setViewCard} />
           ))}
       </Carousel>
     );
-  }, [seriesData]);
+  }, [seriesList, stopCarousel]);
 
   const renderList = useMemo(() => {
     return (
       <div className="list-wrap">
-        {!!seriesData?.length &&
-          Object?.values(seriesData).map((data, index) => (
+        {!!seriesList?.length &&
+          Object?.values(seriesList).map((data, index) => (
             <SquareCard {...data} key={index} />
           ))}
       </div>
     );
-  }, [seriesData]);
+  }, [seriesList]);
 
   return (
-    <div className="main-screen-wrapper">
-      <div className="title-wrapper">
-        <p className="title">Series Collection</p>
+    <>
+    <EpisodePreview {...selectedSeries}/>
+      <div className="main-screen-wrapper">
+        <div className="title-wrapper">
+          <p className="title">Series Collection</p>
+        </div>
+        <button onClick={() => setMode((e) => !e)} className="fab">
+          Mode
+        </button>
+        {mode ? renderList : renderSlider}
       </div>
-      <button onClick={() => setMode((e) => !e)} className="fab">
-        Mode
-      </button>
-      {mode ? renderList : renderSlider}
-    </div>
+    </>
   );
 }

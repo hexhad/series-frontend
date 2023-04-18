@@ -14,6 +14,7 @@ export function Card(data) {
     pictures,
     episodes,
     genres,
+    onPress,
   } = data;
 
   const ratingComp = (stars) => `★★★★★☆☆☆☆☆`.slice(5 - stars, 10 - stars);
@@ -49,7 +50,7 @@ export function Card(data) {
           <span className="card-desc">
             {description.replaceAll(/<.*>|<\/.*>/g, "")}
           </span>
-          <p className="card-episodes">{`Episodes : ${episodes.length}`}</p>
+          <button onClick={()=>{onPress(episodes)}}><p className="card-episodes">{`Episodes : ${episodes.length}`}</p></button>
           <p className="card-network">{network}</p>
           <div className="sub-image-set">
             {pictures?.map(
@@ -68,36 +69,25 @@ export function Card(data) {
 }
 
 export function SquareCard(data) {
-  const {
-    name,
-    image_thumbnail_path,
-  } = data;
+  const { name, image_thumbnail_path } = data;
 
   const { width } = useWindowDimensions();
 
   console.log(width);
-  
+
   return (
     <div className="square">
-      
-
-
-{image_thumbnail_path.length > 28 ? (
-            <img
-            src={image_thumbnail_path}
-            alt={name}
-            className="square-image"
+      {image_thumbnail_path.length > 28 ? (
+        <img src={image_thumbnail_path} alt={name} className="square-image" />
+      ) : (
+        <div className="placeholder-wrapper">
+          <img
+            alt="placeholder"
+            src="https://hexhad.github.io/src/itsmine.png"
+            className="img-placeholder"
           />
-          ) : (
-            <div className="placeholder-wrapper">
-              <img
-                alt="placeholder"
-                src="https://hexhad.github.io/src/itsmine.png"
-                className="img-placeholder"
-              />
-            </div>
-          )}
-
+        </div>
+      )}
 
       <p className="square-title">{name}</p>
     </div>

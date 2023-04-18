@@ -16,3 +16,18 @@ http://hexhad.github.io/series-frontend
 ### check this repo too
 
 https://github.com/hexhad/series-data-backup
+
+
+### Ingrediants
+
+```
+lodash
+firebase
+reduxtookit
+saga
+sass
+
+//also check this 
+mapToGroups(); same as -> groupToMap
+collect.js
+```
