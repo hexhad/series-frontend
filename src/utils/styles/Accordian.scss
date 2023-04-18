@@ -1,0 +1,23 @@
+.accordian-container {
+  max-height: 50vh;
+  overflow-y: scroll;
+  p {
+    margin: 0;
+  }
+  .accordian-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .accordian-main-text {
+      margin-right: 10px;
+    }
+  }
+  .accordian-collapsed-text-wrapper {
+    .accordian-collapsed-name {
+    }
+    .accordian-collapsed-date {
+    }
+    .accordian-collapsed-epi {
+    }
+  }
+}

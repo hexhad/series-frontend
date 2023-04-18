@@ -23,17 +23,25 @@ body {
 }
 .main-screen-wrapper {
 }
-.control-dots {
-  @include mobile {
-    display: none;
+.carousel-root {
+  .control-prev{
+
   }
-  .dot {
-    box-shadow: none !important;
-    background: #868686 !important;
-    margin: 0 3px !important;
+  .control-next{
+    
   }
-  .selected {
-    background: #232c3d !important;
+  .control-dots {
+    @include mobile {
+      display: none;
+    }
+    .dot {
+      box-shadow: none !important;
+      background: #868686 !important;
+      margin: 0 3px !important;
+    }
+    .selected {
+      background: #232c3d !important;
+    }
   }
 }
 .title-wrapper {
