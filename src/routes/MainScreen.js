@@ -66,9 +66,9 @@ export default function MainScreen() {
     <>
     <EpisodePreview {...selectedSeries}/>
       <div className="main-screen-wrapper">
-        <div className="title-wrapper">
+        {/* <div className="title-wrapper">
           <p className="title">Series Collection</p>
-        </div>
+        </div> */}
         <button onClick={() => setMode((e) => !e)} className="fab">
           Mode
         </button>

@@ -1,0 +1,23 @@
+.celeb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .render-title {
+  }
+  .render-celeb {
+    .cleb-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .cleb-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+      .cleb-name {
+      }
+    }
+  }
+}

@@ -24,11 +24,9 @@ body {
 .main-screen-wrapper {
 }
 .carousel-root {
-  .control-prev{
-
+  .control-prev {
   }
-  .control-next{
-    
+  .control-next {
   }
   .control-dots {
     @include mobile {
@@ -78,4 +76,21 @@ body {
   grid-template-columns: repeat(auto-fill, 14vw);
   grid-gap: 1rem;
   justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  .nav-link {
+    text-align: center;
+    background-color: #232c3d;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    &:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
 }

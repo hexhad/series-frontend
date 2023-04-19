@@ -5,10 +5,12 @@ import {
 } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import seriesReducer from "./ducks/seriesSlice";
+import celebrityReducer from "./ducks/celebritySlice";
 import {watcherSaga} from "./sagas/rootSaga";
 
 const reducer = combineReducers({
   series: seriesReducer,
+  celebrity:celebrityReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
